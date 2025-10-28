@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} - Consultation{% endblock %}
+
+{% block titre %}{{ parent()|upper }} Consultation du job {{ job.type }}{% endblock %}
+
+{% block body %}
+<h2>Entreprise : {{ job.company }}</h2>
+<h2>Description : {{ job.description }}</h2>
+<h2>Date d'expiration : {{ job.expiresAt|date('d-m-Y') }}</h2>
+
+{% if job.image %}
+    <h2>Image :</h2>
+    <img src="{{ job.image.url }}" alt="{{ job.image.alt }}" style="max-width:300px;">
+{% else %}
+    <p>Aucune image disponible</p>
+{% endif %}
+{% endblock %}
